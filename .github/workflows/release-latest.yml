@@ -38,7 +38,7 @@ jobs:
         with:
           tag_name: latest
           name: Résumé
-          body: "The latest résumé and coverletter template from Spencer C. Imbleau."
+          body: "The latest résumé and coverletter template from Spencer Imbleau."
           fail_on_unmatched_files: true
           draft: false
           files: |

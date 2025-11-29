@@ -3,7 +3,7 @@
 % --------------------------
 
 % Write name
-\vc{\Huge\ceraproblack{Spencer C. Imbleau }\small\cerapro{He/Him}}
+\vc{\Huge\ceraproblack{Spencer Imbleau}}
 \hfill
 % Include heading icon
 \definecolor{blackcolor}{RGB}{0, 0, 0}
@@ -15,18 +15,22 @@
 % Contact info justified with dividers
 % ----------------------------------
 \noindent
-\makebox[\linewidth][s]{%
-  \faPhone\ \small{+1 (704) 747-5126} \hfill $|$ \hfill
-  \href{mailto:spencer@imbleau.com}{
-    \faIcon{envelope}\ \myuline{spencer@imbleau.com}
-  } \hfill $|$ \hfill
-  \href{https://linkedin.com/in/simbleau}{
-    \faIcon{linkedin}\ \myuline{simbleau}
-  } \hfill $|$ \hfill
-  \href{https://github.com/simbleau}{
-    \faIcon{github}\ \myuline{simbleau}
-  } \hfill $|$ \hfill
-  \href{https://spencer.imbleau.com}{
-    \svgicon{custom-icons/www}\ \myuline{website}
+\makebox[\linewidth]{%
+  % Left-aligned: phone + email + website
+  \makebox[0.5\linewidth][l]{%
+    \faPhone\ \small{+1 (704) 747-5126} \hfill
+    $|$
+    \href{mailto:spencer@imbleau.com}{
+      \faIcon{envelope}\ \myuline{spencer@imbleau.com}
+    }\hfill
+    $|$
+    \href{https://spencer.imbleau.com}{
+    \svgicon{custom-icons/www} \myuline{spencer@imbleau.com}
+    }%
+  }%
+  % Right-aligned: social icons
+  \makebox[0.5\linewidth][r]{%
+    \href{https://linkedin.com/in/simbleau}{\faIcon{linkedin}} \hspace{0.5em}
+    \href{https://github.com/nuzzles}{\faIcon{github}} \hspace{0.5em}%
   }%
 }
