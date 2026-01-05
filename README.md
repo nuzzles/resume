@@ -3,25 +3,25 @@
 A repository containing the LaTeX source of Spencer Imbleau's résumé and coverletter matter. Tested and deployed with GitHub Actions.
 
 ---
-[![résumé last release](https://img.shields.io/github/release-date/simbleau/resume?logo=github&label=Last%20Release)](https://github.com/simbleau/resume/releases)
-[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/simbleau/resume/ci.yml?logo=github&label=CI)](https://github.com/simbleau/resume/actions/workflows/ci.yml)
+[![résumé last release](https://img.shields.io/github/release-date/nuzzles/resume?logo=github&label=Last%20Release)](https://github.com/nuzzles/resume/releases)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/nuzzles/resume/ci.yml?logo=github&label=CI)](https://github.com/nuzzles/resume/actions/workflows/ci.yml)
 
 ## 🤖 Deployment
 
-Deployment is automated by [GitHub Actions](https://github.com/simbleau/resume/actions).
+Deployment is automated by [GitHub Actions](https://github.com/nuzzles/resume/actions).
 
-- Pushes to `main` trigger a new release of the [latest résumé and cover letter](https://github.com/simbleau/resume/releases/tag/latest), available in several formats.
+- Pushes to `main` trigger a new release of the [latest résumé and cover letter](https://github.com/nuzzles/resume/releases/tag/latest), available in several formats.
 
   | Artifact               | Link                                                                          | Mirror                                         |
   | ---------------------- | ----------------------------------------------------------------------------- | ---------------------------------------------- |
-  | Résumé                 | <https://simbleau.github.io/resume/resume.html>                               | <https://simbleau.github.io/resume/>           |
-  | Résumé, Embedded       | <https://simbleau.github.io/resume/resume-embed.html>                         | <https://simbleau.github.io/resume/embed.html> |
-  | Résumé, Download       | <https://github.com/simbleau/resume/releases/download/latest/resume.pdf>      |                                                |
-  | Cover letter           | <https://simbleau.github.io/resume/coverletter.html>                          |                                                |
-  | Cover letter, Embedded | <https://simbleau.github.io/resume/coverletter-embed.html>                    |                                                |
-  | Cover letter, Download | <https://github.com/simbleau/resume/releases/download/latest/coverletter.pdf> |                                                |
+  | Résumé                 | <https://nuzzles.github.io/resume/resume.html>                               | <https://nuzzles.github.io/resume/>           |
+  | Résumé, Embedded       | <https://nuzzles.github.io/resume/resume-embed.html>                         | <https://nuzzles.github.io/resume/embed.html> |
+  | Résumé, Download       | <https://github.com/nuzzles/resume/releases/download/latest/resume.pdf>      |                                                |
+  | Cover letter           | <https://nuzzles.github.io/resume/coverletter.html>                          |                                                |
+  | Cover letter, Embedded | <https://nuzzles.github.io/resume/coverletter-embed.html>                    |                                                |
+  | Cover letter, Download | <https://github.com/nuzzles/resume/releases/download/latest/coverletter.pdf> |                                                |
 
-- Manually pushed [releases](https://github.com/simbleau/resume/releases) also trigger workflows to upload artifacts.
+- Manually pushed [releases](https://github.com/nuzzles/resume/releases) also trigger workflows to upload artifacts.
 
 ## 🔧 Building
 
