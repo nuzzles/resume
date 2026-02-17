@@ -1,11 +1,11 @@
-# 📋 Résumé + Coverletter
+# 📋 Spencer Imbleau
 
 A repository containing the LaTeX source of Spencer Imbleau's résumé and coverletter matter. Tested and deployed with GitHub Actions.
 
 ---
 [![CI](https://img.shields.io/github/actions/workflow/status/nuzzles/resume/ci.yml?logo=github&label=CI)](https://github.com/nuzzles/resume/actions/workflows/ci.yml)
 [![Deploy](https://img.shields.io/github/actions/workflow/status/nuzzles/resume/release-latest.yml?logo=github&label=Deploy)](https://github.com/nuzzles/resume/actions/workflows/release-latest.yml)
-[![License](https://img.shields.io/github/license/nuzzles/resume?label=License)](./LICENSE)
+[![License](https://img.shields.io/badge/License-MIT%2FApache--2.0-blue)](#license)
 
 ## 🤖 Deployment
 
