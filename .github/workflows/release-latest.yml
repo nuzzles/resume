@@ -1,10 +1,9 @@
 name: Release Latest
 on:
-  push:
-    branches: [main]
+  workflow_dispatch:
 
 jobs:
-  release:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Setup | Checkout
@@ -24,30 +23,80 @@ jobs:
           latexmk_use_xelatex: true
           root_file: ./coverletter.tex
 
-      # Replace latest release
-      - name: Clean | Latest
-        uses: dev-drprasad/delete-tag-and-release@v1.1
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          delete_release: true
-          tag_name: latest
-
-      - name: Release | Latest
-        id: create_release
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: latest
-          name: Résumé
-          body: "The latest résumé and coverletter template from Spencer Imbleau."
-          fail_on_unmatched_files: true
-          draft: false
-          files: |
+          name: pdfs
+          path: |
             resume.pdf
             coverletter.pdf
 
-      - name: Release | Publish
-        uses: eregon/publish-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  pages:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Setup | Checkout
+        uses: actions/checkout@v4
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
         with:
-          release_id: ${{ steps.create_release.outputs.id }}
+          name: pdfs
+
+      - name: Stage | PDFs
+        run: |
+          mkdir pub/
+          mv resume.pdf pub/
+          mv coverletter.pdf pub/
+
+      - name: Setup | Python 3.9
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.9
+
+      - name: Setup | j2cli
+        run: |
+          pip3 install --user --upgrade j2cli
+          j2 --version
+
+      - name: Stage | Index
+        run: |
+          PDF='resume.pdf' j2 templates/index.html.j2 > pub/index.html
+
+      - name: Stage | Embed
+        run: |
+          PDF='resume.pdf' j2 templates/embed.html.j2 > pub/embed.html
+
+      - name: Stage | Résumé
+        run: |
+          PDF='resume.pdf' j2 templates/index.html.j2 > pub/resume.html
+
+      - name: Stage | Résumé, Embed
+        run: |
+          PDF='resume.pdf' j2 templates/embed.html.j2 > pub/resume-embed.html
+
+      - name: Stage | Cover letter
+        run: |
+          PDF='coverletter.pdf' j2 templates/index.html.j2 > pub/coverletter.html
+
+      - name: Stage | Cover letter, Embed
+        run: |
+          PDF='coverletter.pdf' j2 templates/embed.html.j2 > pub/coverletter-embed.html
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "pub/"
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

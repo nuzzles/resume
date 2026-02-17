@@ -10,18 +10,16 @@ A repository containing the LaTeX source of Spencer Imbleau's résumé and cover
 
 Deployment is automated by [GitHub Actions](https://github.com/nuzzles/resume/actions).
 
-- Pushes to `main` trigger a new release of the [latest résumé and cover letter](https://github.com/nuzzles/resume/releases/tag/latest), available in several formats.
+- A manual workflow dispatch deploys the résumé and cover letter to [GitHub Pages](https://nuzzles.github.io/resume/), available in several formats.
 
-  | Artifact               | Link                                                                          | Mirror                                         |
-  | ---------------------- | ----------------------------------------------------------------------------- | ---------------------------------------------- |
-  | Résumé                 | <https://nuzzles.github.io/resume/resume.html>                               | <https://nuzzles.github.io/resume/>           |
-  | Résumé, Embedded       | <https://nuzzles.github.io/resume/resume-embed.html>                         | <https://nuzzles.github.io/resume/embed.html> |
-  | Résumé, Download       | <https://github.com/nuzzles/resume/releases/download/latest/resume.pdf>      |                                                |
-  | Cover letter           | <https://nuzzles.github.io/resume/coverletter.html>                          |                                                |
-  | Cover letter, Embedded | <https://nuzzles.github.io/resume/coverletter-embed.html>                    |                                                |
-  | Cover letter, Download | <https://github.com/nuzzles/resume/releases/download/latest/coverletter.pdf> |                                                |
-
-- Manually pushed [releases](https://github.com/nuzzles/resume/releases) also trigger workflows to upload artifacts.
+  | Artifact               | Link                                                      | Mirror                                        |
+  | ---------------------- | --------------------------------------------------------- | --------------------------------------------- |
+  | Résumé                 | <https://nuzzles.github.io/resume/resume.html>            | <https://nuzzles.github.io/resume/>           |
+  | Résumé, Embedded       | <https://nuzzles.github.io/resume/resume-embed.html>      | <https://nuzzles.github.io/resume/embed.html> |
+  | Résumé, Download       | <https://nuzzles.github.io/resume/resume.pdf>             |                                               |
+  | Cover letter           | <https://nuzzles.github.io/resume/coverletter.html>       |                                               |
+  | Cover letter, Embedded | <https://nuzzles.github.io/resume/coverletter-embed.html> |                                               |
+  | Cover letter, Download | <https://nuzzles.github.io/resume/coverletter.pdf>        |                                               |
 
 ## 🔧 Building
 
