@@ -3,8 +3,9 @@
 A repository containing the LaTeX source of Spencer Imbleau's résumé and coverletter matter. Tested and deployed with GitHub Actions.
 
 ---
-[![résumé last release](https://img.shields.io/github/release-date/nuzzles/resume?logo=github&label=Last%20Release)](https://github.com/nuzzles/resume/releases)
-[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/nuzzles/resume/ci.yml?logo=github&label=CI)](https://github.com/nuzzles/resume/actions/workflows/ci.yml)
+[![CI](https://img.shields.io/github/actions/workflow/status/nuzzles/resume/ci.yml?logo=github&label=CI)](https://github.com/nuzzles/resume/actions/workflows/ci.yml)
+[![Deploy](https://img.shields.io/github/actions/workflow/status/nuzzles/resume/release-latest.yml?logo=github&label=Deploy)](https://github.com/nuzzles/resume/actions/workflows/release-latest.yml)
+[![License](https://img.shields.io/github/license/nuzzles/resume?label=License)](./LICENSE)
 
 ## 🤖 Deployment
 
@@ -70,6 +71,19 @@ Deployment is automated by [GitHub Actions](https://github.com/nuzzles/resume/ac
   - Minify and strip the resulting SVG: <https://jakearchibald.github.io/svgomg/>
   - Convert svg to png: `inkscape --export-type png -w 1024 --export-filename /path/to/new.png /path/to/my.svg`
 
-## 🔏 License
+## License
 
-This project is [MIT](./LICENSE) licensed. You are within your rights to fork my résumé and use it as your own, although you should probably change my name to yours!
+Licensed under either of
+
+- Apache License, Version 2.0
+   ([LICENSE-APACHE](LICENSE-APACHE) or <http://www.apache.org/licenses/LICENSE-2.0>)
+- MIT license
+   ([LICENSE-MIT](LICENSE-MIT) or <http://opensource.org/licenses/MIT>)
+
+at your option
+
+## Contribution
+
+Unless you explicitly state otherwise, any contribution intentionally submitted
+for inclusion in the work by you, as defined in the Apache-2.0 license, shall be
+dual licensed as above, without any additional terms or conditions.
