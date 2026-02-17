@@ -18,16 +18,16 @@ resume:
 	latexmk -xelatex -shell-escape -output-directory $(OUTPUT_DIR) $(RESUME_SRC) || \
 		xelatex --shell-escape -output-directory $(OUTPUT_DIR) $(RESUME_SRC)
 	mv $(OUTPUT_DIR)/$(RESUME_SRC:.tex=.pdf) .
-	PDF='$(basename $(RESUME_SRC))' j2 $(INDEX_TEMPLATES) > resume.html
-	PDF='$(basename $(RESUME_SRC))' j2 $(EMBED_TEMPLATES) > embed-resume.html
+	PDF='$(RESUME_SRC:.tex=.pdf)' j2 $(INDEX_TEMPLATES) > resume.html
+	PDF='$(RESUME_SRC:.tex=.pdf)' j2 $(EMBED_TEMPLATES) > embed-resume.html
 
 coverletter:
 	$(call create-output-dir)
 	latexmk -xelatex -shell-escape -output-directory $(OUTPUT_DIR) $(COVERLETTER_SRC) || \
 		xelatex --shell-escape -output-directory $(OUTPUT_DIR) $(COVERLETTER_SRC)
 	mv $(OUTPUT_DIR)/$(COVERLETTER_SRC:.tex=.pdf) .
-	PDF='$(basename $(COVERLETTER_SRC))' j2 $(INDEX_TEMPLATES) > coverletter.html
-	PDF='$(basename $(COVERLETTER_SRC))' j2 $(EMBED_TEMPLATES) > embed-coverletter.html
+	PDF='$(COVERLETTER_SRC:.tex=.pdf)' j2 $(INDEX_TEMPLATES) > coverletter.html
+	PDF='$(COVERLETTER_SRC:.tex=.pdf)' j2 $(EMBED_TEMPLATES) > embed-coverletter.html
 
 open:
 	@if [ -f "resume.pdf" ]; then\

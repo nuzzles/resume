@@ -3,15 +3,15 @@
 <html>
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
     <style>
         body {
             margin: 0;
             height: 100vh;
-            overflow-y: hidden;
+            overflow: hidden;
         }
 
-        iframe {
+        object, iframe {
             border: 0;
             background-color: white;
             width: 100%;
@@ -39,7 +39,9 @@
     <div id="employer">
         {% include 'assets/feather-animation.svg' %}
     </div>
-    <iframe src="{{ PDF }}#view=FitH&zoom=page-fit" />
+    <object data="{{ PDF }}#view=FitH&zoom=page-width" type="application/pdf">
+        <iframe src="{{ PDF }}#view=FitH&zoom=page-width"></iframe>
+    </object>
 </body>
 
 </html>
