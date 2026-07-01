@@ -39,9 +39,10 @@ Deployment is triggered manually via [workflow dispatch](https://github.com/nuzz
 Most icons come from the [`fontawesome5`](https://ctan.org/pkg/fontawesome5?lang=en) TeX package ([documentation](http://mirrors.ctan.org/fonts/fontawesome5/doc/fontawesome5.pdf)). For icons not available in Font Awesome:
 
 1. Find an open-licensed SVG on [SVG Repo](https://www.svgrepo.com)
-2. Crop whitespace from the `viewBox` using [SVGCrop](https://svgcrop.com/)
-3. Minify with [SVGOMG](https://jakearchibald.github.io/svgomg/)
-4. Convert to PNG: `inkscape --export-type png -w 1024 --export-filename assets/custom-icons/<icon>.png assets/custom-icons/<icon>.svg`
+2. (Optional) Minify with [SVGOMG](https://jakearchibald.github.io/svgomg/)
+3. Convert to PNG with tight crop: `inkscape --export-type png -w 1024 -D --export-filename assets/custom-icons/<icon>.png assets/custom-icons/<icon>.svg`
+
+   Alternatively, use [SVGCrop](https://svgcrop.com/).
 
 ## Company Logos
 
@@ -50,14 +51,15 @@ The cover letter and heading display a target company's logo. Logos live in [ass
 To add a new company logo:
 
 1. Find an open-licensed SVG on [SVG Repo](https://www.svgrepo.com)
-2. Crop whitespace from the `viewBox` using [SVGCrop](https://svgcrop.com/)
-3. Minify with [SVGOMG](https://jakearchibald.github.io/svgomg/)
-4. Save the SVG to `assets/companies/<company>.svg`
-5. Convert to PNG:
+2. (Optional) Minify with [SVGOMG](https://jakearchibald.github.io/svgomg/)
+3. Save the SVG to `assets/companies/<company>.svg`
+4. Convert to PNG with tight crop:
 
    ```sh
-   inkscape --export-type png -h 128 --export-filename assets/companies/<company>.png assets/companies/<company>.svg
+   inkscape --export-type png -h 128 -D --export-filename assets/companies/<company>.png assets/companies/<company>.svg
    ```
+
+   Alternatively, use [SVGCrop](https://svgcrop.com/).
 
 ## License
 
