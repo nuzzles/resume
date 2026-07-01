@@ -26,16 +26,26 @@ Deployment is triggered manually via [workflow dispatch](https://github.com/nuzz
 
 ### Commands
 
-| Command                   | Description                                                   |
-| ------------------------- | ------------------------------------------------------------- |
-| `make resume`             | Build the résumé (employed heading)                           |
-| `make resume <stem>`      | Build the résumé with the applying heading and a company logo |
-| `make coverletter`        | Build the cover letter                                        |
-| `make all`                | Build all documents                                           |
-| `make clean`              | Remove build artifacts                                        |
-| `make open`               | Open generated PDFs                                           |
+| Command                        | Description                                                        |
+| ------------------------------ | ------------------------------------------------------------------ |
+| `make resume`                  | Build the résumé (employed heading)                                |
+| `make resume <stem>`           | Build the résumé with the applying heading and a company logo      |
+| `make coverletter`             | Build the cover letter (default Blue Origin logo)                  |
+| `make coverletter <stem>`      | Build the cover letter with a specific company logo                |
+| `make all`                     | Build all documents                                                |
+| `make clean`                   | Remove build artifacts                                             |
+| `make open`                    | Open generated PDFs                                                |
 
 `<stem>` is the filename stem of a logo in `assets/companies/` (e.g. `make resume spacex`).
+
+## Claude Integration
+
+This repo includes [Claude Code](https://claude.ai/code) skills for AI-assisted workflows. Skills live in [.claude/commands/](.claude/commands/).
+
+| Skill               | Description                                                                                                                                          |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/apply`            | End-to-end application flow: logo setup, job req analysis, resume tailoring, cover letter writing, and output collection into `applications/<stem>/` |
+| `/add-company-logo` | Downloads, color-checks, and exports a company logo SVG+PNG into `assets/companies/`                                                                |
 
 ## Custom Icons
 
