@@ -4,7 +4,11 @@ OUTPUT_DIR = ./aux
 INDEX_TEMPLATES = templates/index.html.j2
 EMBED_TEMPLATES = templates/embed.html.j2
 
-.PHONY: all clean open
+COMPANY = $(word 2,$(MAKECMDGOALS))
+
+.PHONY: all clean open resume coverletter
+# Absorb the optional company-stem argument passed to `make resume <stem>`
+$(COMPANY):
 
 all: clean resume coverletter
 
@@ -15,11 +19,18 @@ clean:
 
 resume:
 	$(call create-output-dir)
-	latexmk -xelatex -shell-escape -output-directory $(OUTPUT_DIR) $(RESUME_SRC) || \
-		xelatex --shell-escape -output-directory $(OUTPUT_DIR) $(RESUME_SRC)
-	mv $(OUTPUT_DIR)/$(RESUME_SRC:.tex=.pdf) .
-	PDF='$(RESUME_SRC:.tex=.pdf)' j2 $(INDEX_TEMPLATES) > resume.html
-	PDF='$(RESUME_SRC:.tex=.pdf)' j2 $(EMBED_TEMPLATES) > embed-resume.html
+	$(if $(COMPANY),\
+		sed 's|companies/blueorigin|companies/$(COMPANY)|' \
+			sections/heading_applying.tex > sections/_resume_heading.tex && \
+		sed 's|heading_employed|_resume_heading|' \
+			$(RESUME_SRC) > _resume.tex,\
+		cp $(RESUME_SRC) _resume.tex)
+	latexmk -xelatex -shell-escape -output-directory $(OUTPUT_DIR) _resume.tex || \
+		xelatex --shell-escape -output-directory $(OUTPUT_DIR) _resume.tex
+	mv $(OUTPUT_DIR)/_resume.pdf resume.pdf
+	rm -f _resume.tex sections/_resume_heading.tex
+	PDF='resume.pdf' j2 $(INDEX_TEMPLATES) > resume.html
+	PDF='resume.pdf' j2 $(EMBED_TEMPLATES) > embed-resume.html
 
 coverletter:
 	$(call create-output-dir)
