@@ -45,7 +45,7 @@ This repo includes [Claude Code](https://claude.ai/code) skills for AI-assisted 
 | Skill               | Description                                                                                                                                          |
 | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `/apply`            | End-to-end application flow: logo setup, job req analysis, resume tailoring, cover letter writing, and output collection into `applications/<stem>/` |
-| `/add-company-logo` | Downloads, color-checks, and exports a company logo SVG+PNG into `assets/companies/`                                                                |
+| `/add-company-logo` | Downloads, color-checks, and exports a company logo SVG+PNG into `assets/companies/`                                                                 |
 
 ## Custom Icons
 
