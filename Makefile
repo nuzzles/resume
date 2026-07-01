@@ -34,11 +34,20 @@ resume:
 
 coverletter:
 	$(call create-output-dir)
-	latexmk -xelatex -shell-escape -output-directory $(OUTPUT_DIR) $(COVERLETTER_SRC) || \
-		xelatex --shell-escape -output-directory $(OUTPUT_DIR) $(COVERLETTER_SRC)
-	mv $(OUTPUT_DIR)/$(COVERLETTER_SRC:.tex=.pdf) .
-	PDF='$(COVERLETTER_SRC:.tex=.pdf)' j2 $(INDEX_TEMPLATES) > coverletter.html
-	PDF='$(COVERLETTER_SRC:.tex=.pdf)' j2 $(EMBED_TEMPLATES) > embed-coverletter.html
+	$(if $(COMPANY),\
+		sed 's|companies/blueorigin|companies/$(COMPANY)|' \
+			sections/heading_applying.tex > sections/_coverletter_heading.tex && \
+		sed 's|companies/blueorigin|companies/$(COMPANY)|' \
+			sections/letter.tex > sections/_letter.tex && \
+		sed 's|heading_applying|_coverletter_heading|; s|sections/letter|sections/_letter|' \
+			$(COVERLETTER_SRC) > _coverletter.tex,\
+		cp $(COVERLETTER_SRC) _coverletter.tex)
+	latexmk -xelatex -shell-escape -output-directory $(OUTPUT_DIR) _coverletter.tex || \
+		xelatex --shell-escape -output-directory $(OUTPUT_DIR) _coverletter.tex
+	mv $(OUTPUT_DIR)/_coverletter.pdf coverletter.pdf
+	rm -f _coverletter.tex sections/_coverletter_heading.tex sections/_letter.tex
+	PDF='coverletter.pdf' j2 $(INDEX_TEMPLATES) > coverletter.html
+	PDF='coverletter.pdf' j2 $(EMBED_TEMPLATES) > embed-coverletter.html
 
 open:
 	@if [ -f "resume.pdf" ]; then\
