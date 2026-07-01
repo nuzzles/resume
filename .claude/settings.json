@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cat *)",
+      "Bash(head *)",
+      "Bash(tail *)",
+      "Bash(wc *)",
+      "Bash(git *)",
+      "Bash(curl *)",
+      "Bash(inkscape *)",
+      "Bash(make *)"
+    ],
+    "deny": ["Bash(git commit *)", "Bash(git push *)"]
+  }
+}
