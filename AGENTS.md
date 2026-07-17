@@ -48,10 +48,11 @@ The cover letter uses these custom LaTeX commands (defined in `config/commands.t
 
 ## Skills
 
-Available Codex skills (`.agents/skills/`):
+Shared agent workflows live in `.agent-workflows/`. Claude commands in `.claude/commands/` and Codex skills in `.agents/skills/` are thin wrappers around those canonical workflows.
 
 - `$apply` - full end-to-end application flow: asks for company, handles logo, reads job req, proposes truthful resume tailoring, writes cover letter, builds both PDFs, deposits them in `applications/<stem>/`, and reverts all edits afterward
 - `$add-company-logo` - downloads a company SVG, checks for invisible colors, exports a tight-cropped PNG via Inkscape, and verifies padding
+- Claude equivalents are `/apply` and `/add-company-logo`.
 
 ## Important rules
 
