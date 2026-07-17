@@ -1,0 +1,4 @@
+interface:
+  display_name: "Add Company Logo"
+  short_description: "Add and validate a resume company logo"
+  default_prompt: "Use $add-company-logo to add a company logo to this resume project."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Apply for a Job"
+  short_description: "Build a tailored resume and cover letter"
+  default_prompt: "Use $apply to prepare a tailored resume and cover letter for a job application."
