@@ -38,14 +38,14 @@ Deployment is triggered manually via [workflow dispatch](https://github.com/nuzz
 
 `<stem>` is the filename stem of a logo in `assets/companies/` (e.g. `make resume spacex`).
 
-## Claude Integration
+## AI Integration
 
-This repo includes [Claude Code](https://claude.ai/code) skills for AI-assisted workflows. Skills live in [.claude/commands/](.claude/commands/).
+Shared AI workflows live in [.agent-workflows/](.agent-workflows/). Claude Code commands in [.claude/commands/](.claude/commands/) and Codex skills in [.agents/skills/](.agents/skills/) are thin wrappers around these canonical workflows. Other AI assistants can follow the same workflow files.
 
-| Skill               | Description                                                                                                                                          |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `/apply`            | End-to-end application flow: logo setup, job req analysis, resume tailoring, cover letter writing, and output collection into `applications/<stem>/` |
-| `/add-company-logo` | Downloads, color-checks, and exports a company logo SVG+PNG into `assets/companies/`                                                                 |
+| Workflow | Claude Code | Codex | Description |
+| --- | --- | --- | --- |
+| [Apply](.agent-workflows/apply.md) | `/apply` | `$apply` | End-to-end application flow: logo setup, job requirements, résumé tailoring, cover letter writing, builds, and output collection into `applications/<stem>/` |
+| [Add company logo](.agent-workflows/add-company-logo.md) | `/add-company-logo` | `$add-company-logo` | Downloads and checks a company SVG, then exports a tightly cropped PNG into `assets/companies/` |
 
 ## Custom Icons
 
