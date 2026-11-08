@@ -1,12 +1,14 @@
-Codex and Claude Code icons
+Codex, Claude Code, and MCP icons
 
-The codex.svg / codex.png and claude-code.svg / claude-code.png assets are
+The codex.svg / codex.png, claude-code.svg / claude-code.png, and
+mcp.svg / mcp.png assets are
 adapted from LobeHub's lobe-icons project. SVG fills were normalized to black,
 and PNGs were exported with tight crops for the resume's tooling table.
 
 Sources:
 https://github.com/lobehub/lobe-icons/blob/master/packages/static-svg/icons/codex.svg
 https://github.com/lobehub/lobe-icons/blob/master/packages/static-svg/icons/claudecode.svg
+https://github.com/lobehub/lobe-icons/blob/master/packages/static-svg/icons/mcp.svg
 
 MIT License
 
