@@ -65,19 +65,28 @@ jobs:
         with:
           python-version: '3.13'
 
-      - name: Setup | j2cli
-        run: |
-          python -m pip install j2cli
-          j2 --version
+      - name: Setup | Jinja2
+        run: python -m pip install jinja2
 
       - name: Stage | HTML
         run: |
-          PDF='resume.pdf' j2 templates/index.html.j2 > pub/index.html
-          PDF='resume.pdf' j2 templates/embed.html.j2 > pub/embed.html
-          PDF='resume.pdf' j2 templates/index.html.j2 > pub/resume.html
-          PDF='resume.pdf' j2 templates/embed.html.j2 > pub/resume-embed.html
-          PDF='coverletter.pdf' j2 templates/index.html.j2 > pub/coverletter.html
-          PDF='coverletter.pdf' j2 templates/embed.html.j2 > pub/coverletter-embed.html
+          python - <<'PY'
+          from pathlib import Path
+          from jinja2 import Environment, FileSystemLoader
+
+          env = Environment(loader=FileSystemLoader('.'))
+          pages = {
+              'index.html': ('index.html.j2', 'resume.pdf'),
+              'embed.html': ('embed.html.j2', 'resume.pdf'),
+              'resume.html': ('index.html.j2', 'resume.pdf'),
+              'resume-embed.html': ('embed.html.j2', 'resume.pdf'),
+              'coverletter.html': ('index.html.j2', 'coverletter.pdf'),
+              'coverletter-embed.html': ('embed.html.j2', 'coverletter.pdf'),
+          }
+          for filename, (template, pdf) in pages.items():
+              html = env.get_template(f'templates/{template}').render(PDF=pdf)
+              Path('pub', filename).write_text(html, encoding='utf-8')
+          PY
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
