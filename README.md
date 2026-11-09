@@ -3,12 +3,11 @@
 LaTeX source for Spencer Imbleau's résumé and cover letter, with automated builds and deployment via GitHub Actions.
 
 [![CI](https://img.shields.io/github/actions/workflow/status/nuzzles/resume/ci.yml?logo=github&label=CI)](https://github.com/nuzzles/resume/actions/workflows/ci.yml)
-[![Deploy](https://img.shields.io/github/actions/workflow/status/nuzzles/resume/release-latest.yml?logo=github&label=Deploy)](https://github.com/nuzzles/resume/actions/workflows/release-latest.yml)
 [![License](https://img.shields.io/badge/License-MIT%2FApache--2.0-blue)](#license)
 
 ## Deployment
 
-Deployment is triggered manually via [workflow dispatch](https://github.com/nuzzles/resume/actions/workflows/release-latest.yml), which builds the documents and publishes them to [GitHub Pages](https://nuzzles.github.io/resume/).
+Successful CI builds on `main` publish the documents to [GitHub Pages](https://nuzzles.github.io/resume/). Pull requests and other branches build the PDFs without deploying. To publish manually, run the [CI workflow](https://github.com/nuzzles/resume/actions/workflows/ci.yml) on `main`.
 
 | Document       | View                                                      | Embed                                                         | Download                                                 |
 | -------------- | --------------------------------------------------------- | ------------------------------------------------------------- | -------------------------------------------------------- |
