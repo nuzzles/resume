@@ -7,8 +7,7 @@
 
 % Add custom icon
 \newcommand{\svgicon}[1]{%
-\raisebox{-1pt}{\includegraphics[height=1em, keepaspectratio]{#1}\hspace{-0.25em}}
-%
+  \raisebox{-1pt}{\includegraphics[height=1em, keepaspectratio]{#1}}%
 }
 
 % Add underline command
@@ -46,7 +45,7 @@
 % Add itemized commands
 \newcommand{\myItem}[1]{\item\small{{#1 \vspace{-2pt}}}}
 \newcommand{\mySubItem}[1]{\myItem{#1}\vspace{-4pt}}
-\newcommand{\mySubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\mySubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}, itemsep=8pt]}
 \newcommand{\mySubHeadingListEnd}{\end{itemize}}
 \newcommand{\myItemListStart}{\begin{itemize}}
 \newcommand{\myItemListEnd}{\end{itemize}\vspace{-5pt}}
