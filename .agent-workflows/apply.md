@@ -6,6 +6,7 @@ End-to-end workflow for building a tailored resume and cover letter for a job ap
 
 - Keep all tailoring truthful: only reorder, reframe, or emphasize experience already present in the resume or explicitly provided by the user.
 - Do not invent or exaggerate experience.
+- When framing motivation, collaboration, judgment, or work style, use the shared [Cultural Values workflow](cultural-values.md) and its personal-values reference. Ground statements about past behavior in actual experience.
 - Restore `sections/letter.tex` to the lorem ipsum placeholder after copying the PDFs.
 - Restore resume tailoring edits by default after copying the PDFs, unless the user explicitly asks to keep them.
 - Do not keep Makefile temporary files such as `_resume.tex`, `_coverletter.tex`, `sections/_resume_heading.tex`, `sections/_coverletter_heading.tex`, or `sections/_letter.tex`.
