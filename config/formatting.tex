@@ -29,8 +29,10 @@
 % Renew section format
 \titleformat{\section}{
     {\color{gray}\titlerule} \vspace{-5pt}
-    \vspace{8pt}\scshape\raggedright\Large\normalfont\bfseries
+    \vspace{8pt}\raggedright\Large\normalfont\resumeHeadingFont\bfseries
 }{}{0pt}{}
+% Keep section headings close to their content; reserve space for entry separation.
+\titlespacing*{\section}{0pt}{11pt}{2pt}
 
 % Renew itemize format
 \renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}

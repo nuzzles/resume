@@ -46,6 +46,19 @@ Shared AI workflows live in [.agent-workflows/](.agent-workflows/). Claude Code 
 | [Apply](.agent-workflows/apply.md) | `/apply` | `$apply` | End-to-end application flow: logo setup, job requirements, résumé tailoring, cover letter writing, builds, and output collection into `applications/<stem>/` |
 | [Add company logo](.agent-workflows/add-company-logo.md) | `/add-company-logo` | `$add-company-logo` | Downloads and checks a company SVG, then exports a tightly cropped PNG into `assets/companies/` |
 
+## Fonts
+
+Select one preset in `config/fonts.tex` by uncommenting its `\input` line and commenting out the others:
+
+- `anthropic-serif` (selected): Anthropic Serif Text for body copy and Display for headings.
+- `legacy`: the previous Cera Pro, Roboto, and Trade Gothic configuration, preserved together.
+- `roboto`: a sans-serif alternative using the existing Roboto files.
+
+Each preset defines the body font plus `\resumeHeadingFont` and `\resumeMetaFont`, so
+sections do not need font-specific edits. The Blue Origin wordmark keeps its original
+Trade Gothic font independently of the selected preset. Font files are loaded from
+`assets/fonts/`; no system font installation is required. Rebuild with `make resume` after switching.
+
 ## Custom Icons
 
 Most icons come from the [`fontawesome5`](https://ctan.org/pkg/fontawesome5?lang=en) TeX package ([documentation](http://mirrors.ctan.org/fonts/fontawesome5/doc/fontawesome5.pdf)). For icons not available in Font Awesome:

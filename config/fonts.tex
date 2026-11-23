@@ -1,71 +1,13 @@
-% ------------------
-% Common text config
-% ------------------
+% -------------------------
+% Font selection
+% -------------------------
+% Select exactly one preset for document typography.
+\input{./config/font-presets/anthropic-serif}
+% \input{./config/font-presets/legacy} % Previous Cera Pro / Roboto / Trade Gothic fonts
+% \input{./config/font-presets/roboto} % Roboto document text
 
-% Default, common font
-\setmainfont{Cera-Pro-Medium}[
-Path = ./assets/fonts/Cera-Pro/,
-Extension = .otf,
-UprightFont = Cera-Pro-Medium,
-BoldFont = Cera-Pro-Bold,
-ItalicFont = Cera-Pro-Regular-Italic,
-BoldItalicFont = Cera-Pro-Black-Italic,
-]
-
-% Installed fonts
-
-% Cera Pro Black
-\newfontfamily{\ceraproblack}{Cera-Pro-Black}[
-    Path = ./assets/fonts/Cera-Pro/,
-    Extension = .otf,
-    UprightFont = Cera-Pro-Black,
-    BoldFont = Cera-Pro-Black,
-    ItalicFont = Cera-Pro-Black-Italic,
-    BoldItalicFont = Cera-Pro-Black-Italic,
-]
-
-% Cera Pro Medium
-\newfontfamily{\cerapro}{Cera-Pro-Medium}[
-    Path = ./assets/fonts/Cera-Pro/,
-    Extension = .otf,
-    UprightFont = Cera-Pro-Medium,
-    BoldFont = Cera-Pro-Bold,
-    ItalicFont = Cera-Pro-Regular-Italic,
-    BoldItalicFont = Cera-Pro-Black-Italic,
-]
-
-% Roboto - Thick
-\newfontfamily{\robotothick}{Roboto-Bold}[
-    Path = ./assets/fonts/Roboto/,
-    Extension = .ttf,
-    UprightFont = Roboto-Bold,
-    BoldFont = Roboto-Black,
-    ItalicFont = Roboto-BoldItalic,
-    BoldItalicFont = Roboto-BlackItalic,
-]
-
-% Roboto
-\newfontfamily{\roboto}{Roboto-Regular}[
-    Path = ./assets/fonts/Roboto/,
-    Extension = .ttf,
-    UprightFont = Roboto-Regular,
-    BoldFont = Roboto-Bold,
-    ItalicFont = Roboto-Italic,
-    BoldItalicFont = Roboto-BoldItalic,
-]
-
-% Roboto - Thin
-\newfontfamily{\robotothin}{Roboto-Thin}[
-    Path = ./assets/fonts/Roboto/,
-    Extension = .ttf,
-    UprightFont = Roboto-Thin,
-    BoldFont = Roboto-Medium,
-    ItalicFont = Roboto-ThinItalic,
-    BoldItalicFont = Roboto-MediumItalic,
-]
-
-% Trade Gothic Bold Condensed No. 20 (Blue Origin)
-\newfontfamily{\tradegothic}{Trade-Gothic-Bold-Condensed-No-20}[
+% Keep the Blue Origin wordmark independent of the selected document fonts.
+\newfontfamily{\resumeBrandFont}{Trade-Gothic-Bold-Condensed-No-20}[
     Path = ./assets/fonts/Trade-Gothic-Bold-Condensed-No-20/,
     Extension = .otf,
     UprightFont = Trade-Gothic-Bold-Condensed-No-20,
