@@ -22,8 +22,18 @@ Successful CI builds on `main` publish the documents to [GitHub Pages](https://n
 
 - [TeX Live (full)](https://www.tug.org/texlive/) (`brew install texlive`)
 - [Make](https://www.gnu.org/software/make/) (`brew install make`)
-- [j2cli](https://github.com/kolypto/j2cli) (`brew install j2cli`)
+- Python 3.11 (`brew install python@3.11`)
 - [Inkscape](https://inkscape.org/) (`brew install --cask inkscape`)
+
+Install the pinned Python dependencies, including Jinja2 and j2cli, in a virtual environment:
+
+```sh
+python3.11 -m venv .venv
+source .venv/bin/activate
+.venv/bin/python -m pip install -r requirements.txt
+```
+
+Activate the environment before running `make`.
 
 ### Commands
 

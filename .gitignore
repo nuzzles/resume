@@ -4,6 +4,9 @@
 # Ignore VS Code
 /.vscode/
 
+# Local Python environment
+/.venv/
+
 # Ignore build files
 /aux/
 /*.pdf
