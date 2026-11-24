@@ -2,6 +2,8 @@
 
 LaTeX source for Spencer Imbleau's résumé and cover letter, with automated builds and deployment via GitHub Actions.
 
+See also [*how I work*](docs/personal-values.md).
+
 [![CI](https://img.shields.io/github/actions/workflow/status/nuzzles/resume/ci.yml?logo=github&label=CI)](https://github.com/nuzzles/resume/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/License-MIT%2FApache--2.0-blue)](#license)
 
@@ -39,12 +41,12 @@ Successful CI builds on `main` publish the documents to [GitHub Pages](https://n
 
 ## AI Integration
 
-Shared AI workflows live in [.agent-workflows/](.agent-workflows/). Claude Code commands in [.claude/commands/](.claude/commands/) and Codex skills in [.agents/skills/](.agents/skills/) are thin wrappers around these canonical workflows. Other AI assistants can follow the same workflow files.
+Project guidance lives in [AGENTS.md](AGENTS.md). Shared skills live in [.agents/skills/](.agents/skills/), with [.claude](.claude) symlinked to [.agents](.agents) for Claude Code discovery. Each skill contains its complete workflow.
 
-| Workflow | Claude Code | Codex | Description |
+| Skill | Claude Code | Codex | Description |
 | --- | --- | --- | --- |
-| [Apply](.agent-workflows/apply.md) | `/apply` | `$apply` | End-to-end application flow: logo setup, job requirements, résumé tailoring, cover letter writing, builds, and output collection into `applications/<stem>/` |
-| [Add company logo](.agent-workflows/add-company-logo.md) | `/add-company-logo` | `$add-company-logo` | Downloads and checks a company SVG, then exports a tightly cropped PNG into `assets/companies/` |
+| [Apply](.agents/skills/apply/SKILL.md) | `/apply` | `$apply` | End-to-end application flow: logo setup, job requirements, résumé tailoring, cover letter writing, builds, and output collection into `applications/<stem>/` |
+| [Add company logo](.agents/skills/add-company-logo/SKILL.md) | `/add-company-logo` | `$add-company-logo` | Downloads and checks a company SVG, then exports a tightly cropped PNG into `assets/companies/` |
 
 ## Custom Icons
 

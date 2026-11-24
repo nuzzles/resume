@@ -48,15 +48,15 @@ The cover letter uses these custom LaTeX commands (defined in `config/commands.t
 
 ## Skills
 
-Shared agent workflows live in `.agent-workflows/`. Claude commands in `.claude/commands/` and Codex skills in `.agents/skills/` are thin wrappers around those canonical workflows.
+Project guidance lives in `AGENTS.md`. Shared skills live in `.agents/skills/`, with `.claude` symlinked to `.agents` for Claude Code discovery. Each skill contains its complete workflow.
 
 - `$apply` - full end-to-end application flow: asks for company, handles logo, reads job req, proposes truthful resume tailoring, writes cover letter, builds both PDFs, deposits them in `applications/<stem>/`, and reverts all edits afterward
 - `$add-company-logo` - downloads a company SVG, checks for invisible colors, exports a tight-cropped PNG via Inkscape, and verifies padding
-- Claude equivalents are `/apply` and `/add-company-logo`.
+- Claude Code invokes the same skills as `/apply` and `/add-company-logo`.
 
 ## Writing guidance
 
-When writing or reviewing resume and cover-letter content, consult Spencer's [personal values](.agent-workflows/references/personal-values.md). Treat them as chosen commitments, not evidence of past accomplishments. Express them through concrete, supported actions and outcomes, preserving the distinction between individual contribution and team achievement.
+When writing or reviewing resume and cover-letter content, consult Spencer's [personal values](docs/personal-values.md). Treat them as chosen commitments, not evidence of past accomplishments. Express them through concrete, supported actions and outcomes, preserving the distinction between individual contribution and team achievement.
 
 ## Important rules
 
