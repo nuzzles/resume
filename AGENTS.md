@@ -52,8 +52,11 @@ Shared agent workflows live in `.agent-workflows/`. Claude commands in `.claude/
 
 - `$apply` - full end-to-end application flow: asks for company, handles logo, reads job req, proposes truthful resume tailoring, writes cover letter, builds both PDFs, deposits them in `applications/<stem>/`, and reverts all edits afterward
 - `$add-company-logo` - downloads a company SVG, checks for invisible colors, exports a tight-cropped PNG via Inkscape, and verifies padding
-- `$cultural-values` - expresses personal values through truthful resume content, cover letters, and interview preparation; includes a one-page personal manifesto
-- Claude equivalents are `/apply`, `/add-company-logo`, and `/cultural-values`.
+- Claude equivalents are `/apply` and `/add-company-logo`.
+
+## Writing guidance
+
+When writing or reviewing resume and cover-letter content, consult Spencer's [personal values](.agent-workflows/references/personal-values.md). Treat them as chosen commitments, not evidence of past accomplishments. Express them through concrete, supported actions and outcomes, preserving the distinction between individual contribution and team achievement.
 
 ## Important rules
 
