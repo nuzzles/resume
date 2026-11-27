@@ -1,26 +1,38 @@
 <!doctype html>
-<!-- The PDF embedded page for embedded frames, with toolbars and navigation disabled -->
-<html>
+<!-- A responsive PDF preview without the browser's native PDF viewer. -->
+<html lang="en">
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <title>PDF preview</title>
+    {% set pdfjs = './pdfjs' %}
+    <link rel="stylesheet" href="{{ pdfjs }}/legacy/web/pdf_viewer.css">
     <style>
         body {
             margin: 0;
-            height: 100vh;
-            overflow: hidden;
+            background: white;
         }
 
-        object, iframe {
-            border: 0;
-            background-color: white;
-            width: 100%;
-            height: 100%;
+        #viewerContainer {
+            position: absolute;
+            inset: 0;
+            overflow: auto;
+            outline-offset: -2px;
+        }
+
+        #status, noscript {
+            position: relative;
+            z-index: 2;
+            margin: 0;
+            padding: 1rem;
+            background: white;
+            font: 1rem/1.5 sans-serif;
         }
 
         #employer {
             position: absolute;
             top: 0;
+            z-index: 1;
             pointer-events: none;
             display: flex;
             flex-direction: column;
@@ -36,12 +48,77 @@
 </head>
 
 <body>
+    <p id="status" role="status">
+        <span>Loading PDF.</span> <a href="{{ PDF }}" target="_blank" rel="noopener">Open PDF</a>
+    </p>
+    <noscript><a href="{{ PDF }}" target="_blank" rel="noopener">Open PDF</a></noscript>
+    <div id="viewerContainer" tabindex="0" aria-label="PDF preview">
+        <div id="viewer" class="pdfViewer"></div>
+    </div>
     <div id="employer">
         {% include 'assets/feather-animation.svg' %}
     </div>
-    <object data="{{ PDF }}#pagemode=none&toolbar=0&navpanes=0&view=FitH&zoom=page-width" type="application/pdf">
-        <iframe src="{{ PDF }}#pagemode=none&toolbar=0&navpanes=0&view=FitH&zoom=page-width"></iframe>
-    </object>
+    <script type="module">
+        const status = document.getElementById("status");
+        const showError = () => {
+            status.querySelector("span").textContent = "Preview unavailable.";
+            status.hidden = false;
+        };
+
+        try {
+            // Keep the API, worker, viewer, and styles on the same pinned release.
+            const base = {{ pdfjs | tojson }};
+            const { getDocument, GlobalWorkerOptions } = await import(`${base}/legacy/build/pdf.mjs`);
+            const { EventBus, PDFLinkService, PDFViewer } = await import(`${base}/legacy/web/pdf_viewer.mjs`);
+            GlobalWorkerOptions.workerSrc = `${base}/legacy/build/pdf.worker.mjs`;
+
+            const container = document.getElementById("viewerContainer");
+            const eventBus = new EventBus();
+            const linkService = new PDFLinkService({
+                eventBus,
+                externalLinkTarget: 2, // Open external links outside the embedded preview.
+                externalLinkRel: "noopener noreferrer",
+                ignoreDestinationZoom: true,
+            });
+            const viewer = new PDFViewer({
+                container,
+                eventBus,
+                linkService,
+                removePageBorders: true,
+            });
+            linkService.setViewer(viewer);
+
+            eventBus.on("pagesinit", () => {
+                viewer.currentScaleValue = "page-width";
+            });
+            eventBus.on("pagerendered", ({ error }) => {
+                if (error) showError();
+                else status.hidden = true;
+            });
+            // The iframe can resize independently of the top-level browser window.
+            let previousWidth = 0;
+            new ResizeObserver(() => {
+                const width = container.clientWidth;
+                if (width > 0 && width !== previousWidth && viewer.pagesCount) {
+                    previousWidth = width;
+                    viewer.currentScaleValue = "page-width";
+                }
+            }).observe(container);
+
+            const pdfDocument = await getDocument({
+                url: {{ PDF | tojson }},
+                cMapUrl: `${base}/cmaps/`,
+                cMapPacked: true,
+                standardFontDataUrl: `${base}/standard_fonts/`,
+                wasmUrl: `${base}/wasm/`,
+            }).promise;
+            linkService.setDocument(pdfDocument);
+            viewer.setDocument(pdfDocument);
+        } catch (error) {
+            console.error("Unable to display PDF preview", error);
+            showError();
+        }
+    </script>
 </body>
 
 </html>

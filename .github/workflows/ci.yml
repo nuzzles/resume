@@ -70,6 +70,7 @@ jobs:
 
       - name: Stage | HTML
         run: |
+          python scripts/setup_pdfjs.py pub/pdfjs
           python - <<'PY'
           from pathlib import Path
           from jinja2 import Environment, FileSystemLoader

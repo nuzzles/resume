@@ -29,6 +29,7 @@ resume:
 		xelatex --shell-escape -output-directory $(OUTPUT_DIR) _resume.tex
 	mv $(OUTPUT_DIR)/_resume.pdf resume.pdf
 	rm -f _resume.tex sections/_resume_heading.tex
+	python3 scripts/setup_pdfjs.py
 	PDF='resume.pdf' j2 $(INDEX_TEMPLATES) > resume.html
 	PDF='resume.pdf' j2 $(EMBED_TEMPLATES) > embed-resume.html
 
@@ -46,6 +47,7 @@ coverletter:
 		xelatex --shell-escape -output-directory $(OUTPUT_DIR) _coverletter.tex
 	mv $(OUTPUT_DIR)/_coverletter.pdf coverletter.pdf
 	rm -f _coverletter.tex sections/_coverletter_heading.tex sections/_letter.tex
+	python3 scripts/setup_pdfjs.py
 	PDF='coverletter.pdf' j2 $(INDEX_TEMPLATES) > coverletter.html
 	PDF='coverletter.pdf' j2 $(EMBED_TEMPLATES) > embed-coverletter.html
 
